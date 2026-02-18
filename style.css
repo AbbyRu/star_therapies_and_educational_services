@@ -4,7 +4,7 @@ html, body {
 
 body {
     display: flex;
-    flex-direction: grid;
+    flex-direction: column;
     min-height: 100vh;
     font-family: "Segoe UI", Arial, sans-serif;
     background: #f7faf9;
