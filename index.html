@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Star Therapies ED | Care. Growth. Soar.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage: #7a9e87;
+      --sage-light: #b5ceba;
+      --sage-deep: #4a7259;
+      --cream: #f8f4ee;
+      --warm-white: #fdfaf6;
+      --charcoal: #2c2c2c;
+      --mid: #6b6b6b;
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --section-pad: 90px 6vw;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6vw;
+      background: rgba(253,250,246,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(122,158,135,0.2);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--sage-deep);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--charcoal);
+      font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative; padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--sage);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--sage-deep); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--sage-deep); color: white !important;
+      padding: 9px 22px; border-radius: 2px;
+      transition: background 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--sage) !important; }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--charcoal); transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 6vw 80px;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(122,158,135,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.1) 0%, transparent 50%),
+        var(--warm-white);
+      position: relative; overflow: hidden;
+    }
+    .hero-ornament {
+      position: absolute; width: 500px; height: 500px;
+      border: 1px solid rgba(122,158,135,0.15); border-radius: 50%;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: pulse-ring 4s ease-in-out infinite;
+    }
+    .hero-ornament:nth-child(2) {
+      width: 700px; height: 700px;
+      animation-delay: 1s; opacity: 0.6;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.03); opacity: 0.6; }
+    }
+
+    .hero-tag {
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--sage); font-weight: 500; margin-bottom: 20px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 600; line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+    .hero-title em {
+      color: var(--sage-deep); font-style: italic;
+    }
+    .hero-slogan {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-mission {
+      max-width: 600px; margin: 0 auto 40px;
+      color: var(--mid); font-size: 1.05rem; line-height: 1.8;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.6s ease both;
+    }
+    .btn-primary {
+      background: var(--sage-deep); color: white;
+      padding: 14px 32px; border-radius: 2px;
+      text-decoration: none; font-weight: 400; font-size: 0.9rem;
+      letter-spacing: 0.05em; transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid var(--sage-deep); color: var(--sage-deep);
+      padding: 14px 32px; border-radius: 2px;
+      text-decoration: none; font-weight: 400; font-size: 0.9rem;
+      letter-spacing: 0.05em; transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      background: var(--sage-deep); color: white; transform: translateY(-2px);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: var(--section-pad); }
+    section:nth-child(even) { background: var(--cream); }
+
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); font-weight: 500; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600; line-height: 1.15;
+      margin-bottom: 24px; color: var(--charcoal);
+    }
+    .section-title em { color: var(--sage-deep); font-style: italic; }
+    .section-intro {
+      max-width: 600px; color: var(--mid); font-size: 1rem; line-height: 1.8;
+      margin-bottom: 56px;
+    }
+
+    .divider {
+      width: 48px; height: 2px; background: var(--gold);
+      margin: 0 0 28px;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: start;
+    }
+    .about-left p {
+      color: var(--mid); line-height: 1.9; margin-bottom: 16px; font-size: 1rem;
+    }
+    .values-list {
+      list-style: none; margin-top: 32px;
+    }
+    .values-list li {
+      padding: 12px 0; border-bottom: 1px solid rgba(122,158,135,0.2);
+      color: var(--charcoal); font-size: 0.95rem;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .values-list li::before {
+      content: '✦'; color: var(--gold); font-size: 0.7rem; margin-top: 5px; flex-shrink: 0;
+    }
+
+    .who-card {
+      background: white; border-radius: 4px;
+      padding: 36px; margin-bottom: 20px;
+      border-left: 3px solid var(--sage);
+    }
+    .who-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; color: var(--sage-deep); margin-bottom: 16px;
+    }
+    .who-card ul { list-style: none; }
+    .who-card ul li {
+      padding: 6px 0; color: var(--mid); font-size: 0.95rem;
+      padding-left: 16px; position: relative;
+    }
+    .who-card ul li::before {
+      content: '—'; position: absolute; left: 0; color: var(--sage-light);
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: white; padding: 32px 28px;
+      border-radius: 4px; border-top: 2px solid var(--sage);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--gold);
+      transition: width 0.4s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .service-card:hover::after { width: 100%; }
+    .service-icon {
+      width: 42px; height: 42px; background: var(--cream);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 1.2rem;
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--charcoal); margin-bottom: 8px;
+    }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+    }
+    .team-card {
+      background: white; border-radius: 4px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transition: transform 0.3s;
+    }
+    .team-card:hover { transform: translateY(-4px); }
+    .team-avatar {
+      height: 90px; background: linear-gradient(135deg, var(--sage), var(--sage-deep));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .team-body { padding: 28px 24px; }
+    .team-role {
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--sage); font-weight: 500; margin-bottom: 8px;
+    }
+    .team-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; color: var(--charcoal); margin-bottom: 12px;
+    }
+    .team-body p { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--charcoal);
+    }
+    #contact .section-label { color: var(--sage-light); }
+    #contact .section-title { color: white; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+    .contact-info { color: rgba(255,255,255,0.7); }
+    .contact-info p { margin-bottom: 12px; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      margin-bottom: 24px; padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-icon {
+      width: 44px; height: 44px; background: rgba(122,158,135,0.2);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-item h4 {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--sage-light); margin-bottom: 4px; font-weight: 500;
+    }
+    .contact-item p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin: 0; }
+    .contact-item a { color: var(--sage-light); text-decoration: none; }
+    .contact-item a:hover { color: var(--gold); }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%; padding: 14px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 2px;
+      color: white; font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; margin-bottom: 16px;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus { border-color: var(--sage); }
+    .contact-form select option { background: var(--charcoal); }
+    .contact-form textarea { height: 120px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit {
+      background: var(--sage); color: white;
+      padding: 14px 36px; border: none; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      letter-spacing: 0.08em; cursor: pointer;
+      transition: background 0.3s, transform 0.2s; width: 100%;
+    }
+    .btn-submit:hover { background: var(--sage-deep); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1e1e1e; color: rgba(255,255,255,0.4);
+      text-align: center; padding: 28px 6vw;
+      font-size: 0.83rem; letter-spacing: 0.04em;
+    }
+    footer a { color: var(--sage-light); text-decoration: none; }
+
+    /* ── MOBILE MENU ── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; position: fixed; top: 65px; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: var(--warm-white);
+        border-bottom: 1px solid rgba(122,158,135,0.2);
+        padding: 12px 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid rgba(0,0,0,0.05); }
+      .nav-links a {
+        display: block; padding: 14px 6vw;
+        font-size: 0.9rem;
+      }
+      .nav-cta { margin: 12px 6vw; border-radius: 2px; text-align: center; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">Star <span>Therapies</span> ED</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-ornament"></div>
+    <div class="hero-ornament"></div>
+    <div style="position:relative; z-index:1;">
+      <p class="hero-tag">Educational & Occupational Therapy | Nairobi, Kenya</p>
+      <h1 class="hero-title">Empowering Every<br><em>Child to Thrive</em></h1>
+      <p class="hero-slogan">Care &nbsp;·&nbsp; Growth &nbsp;·&nbsp; Soar</p>
+      <p class="hero-mission">
+        To identify strengths, remove barriers, and deliver personalised support that enables every child to thrive academically, socially, and functionally.
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Our Services</a>
+        <a href="#contact" class="btn-outline">Book a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">Who We Are</p>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-left">
+        <h2 class="section-title">A Specialist Team <em>Dedicated</em> to Children</h2>
+        <p>We are a team of specialists providing Educational and Occupational Therapy Assessments and Interventions, and Special Educational Needs (SEN) Consultations. We work alongside families and educational settings to enable children and young people to reach their full potential.</p>
+        <p>We believe in a holistic, child-centred approach. Our work focuses not just on addressing challenges but on building confidence and self-reliance — because every child brings their own unique strengths.</p>
+        <ul class="values-list">
+          <li>Evidence-based and research-informed practice</li>
+          <li>Collaborative working and joint planning</li>
+          <li>Effective communication and teamwork</li>
+          <li>Functional and real-life outcomes</li>
+        </ul>
+      </div>
+      <div class="about-right">
+        <div class="who-card">
+          <h3>Who We Support</h3>
+          <ul>
+            <li>Learning differences and difficulties</li>
+            <li>Barriers to accessing the curriculum</li>
+            <li>Fine and gross motor skill challenges</li>
+            <li>Sensory processing difficulties</li>
+            <li>Executive functioning challenges</li>
+            <li>Difficulties in attention and organisation</li>
+          </ul>
+        </div>
+        <div class="who-card" style="border-left-color: var(--gold); margin-top: 20px;">
+          <h3>Our Commitment</h3>
+          <p style="color: var(--mid); font-size:0.95rem; line-height:1.8;">We are committed to providing professional and ethical services of the highest quality — empowering children and young people, and supporting families and schools to make a lasting difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="section-label">What We Offer</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Our <em>Services</em></h2>
+    <p class="section-intro">Each child and young person is unique and requires a specific, individualised plan that ensures effective and achievable results.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Occupational Therapy Assessments</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Comprehensive assessments of sensory, motor, and functional skills to guide targeted interventions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤲</div>
+        <h3>Occupational Therapy Interventions</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Goal-oriented therapy designed to improve independence and participation in school and daily life.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✏️</div>
+        <h3>Fine & Gross Motor Development</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Targeted programmes to develop movement, coordination, and handwriting skills.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Sensory Processing Support</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Assessment and intervention strategies for children experiencing sensory processing difficulties.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Executive Functioning Support</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Strategies to build attention, organisation, planning, and self-regulation skills.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📚</div>
+        <h3>Educational Assessments</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Identifying learning needs and potential through thorough, evidence-based assessment.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Academic Interventions</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Individualised programmes to address specific learning difficulties and close skill gaps.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <h3>SEN Consultations</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Expert guidance for schools and families navigating Special Educational Needs provision.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏫</div>
+        <h3>School-Based Observations</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">In-context observations to better understand how a child functions within their learning environment.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>Access Arrangements</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Assessment and guidance for exam access arrangements and reasonable adjustments in line with regulatory requirements.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👨‍👩‍👧</div>
+        <h3>Parent & Teacher Consultations</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Collaborative sessions to align support strategies between home and school environments.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Progress Monitoring & Reports</h3>
+        <p style="color:var(--mid); font-size:0.9rem; line-height:1.7;">Regular review reports to track progress and adapt support plans as children develop.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <p class="section-label">The People Behind the Work</p>
+    <div class="divider"></div>
+    <h2 class="section-title">Meet Our <em>Specialists</em></h2>
+    <p class="section-intro">Our team brings together expertise in Occupational Therapy, Special Educational Needs, and Educational Assessment — working collaboratively to deliver comprehensive, high-quality support.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">🩺</div>
+        <div class="team-body">
+          <p class="team-role">Occupational Therapist</p>
+          <h3>OT Specialist</h3>
+          <p>Specialising in assessment and intervention for fine motor skills, gross motor development, sensory processing, and executive functioning — with practical, goal-oriented approaches designed for real-life independence.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">📖</div>
+        <div class="team-body">
+          <p class="team-role">Special Needs Teacher & Specialist Assessor</p>
+          <h3>SEN Specialist</h3>
+          <p>Experienced in identifying learning differences and educational barriers. Provides comprehensive educational assessments, targeted intervention programmes, and detailed reports to guide effective support.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">🏫</div>
+        <div class="team-body">
+          <p class="team-role">SENDCo</p>
+          <h3>SEND Coordinator</h3>
+          <p>Providing strategic oversight for inclusive practice within schools — supporting IEP development, coordinating interventions, and working with staff and families to ensure appropriate provision.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">📋</div>
+        <div class="team-body">
+          <p class="team-role">Access Arrangements Specialist</p>
+          <h3>Assessments Expert</h3>
+          <p>Experienced in assessing and recommending appropriate examination access arrangements and reasonable adjustments, ensuring learners have equitable access to assessments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Get In Touch</p>
+    <div class="divider" style="background: var(--sage);"></div>
+    <h2 class="section-title">Let's Start a <em>Conversation</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:startherapies.ed@outlook.com">startherapies.ed@outlook.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+254722998504">+254 722 998 504</a></p>
+            <p><a href="tel:+254721484420">+254 721 484 420</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Location</h4>
+            <p>Nairobi, Kenya</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <h4>Website</h4>
+            <p><a href="#">startherapiesed.ac.ke</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Email Address" />
+        </div>
+        <input type="tel" placeholder="Phone Number" />
+        <select>
+          <option value="" disabled selected>I'm enquiring about…</option>
+          <option>Occupational Therapy Assessment</option>
+          <option>Educational Assessment</option>
+          <option>SEN Consultation</option>
+          <option>Access Arrangements</option>
+          <option>School Observation</option>
+          <option>General Enquiry</option>
+        </select>
+        <textarea placeholder="Tell us a little about your child and how we can help…"></textarea>
+        <button class="btn-submit" type="button">Send Enquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p style="margin-bottom:6px;">
+      <strong style="color:rgba(255,255,255,0.6);">Star Therapies ED</strong> &nbsp;|&nbsp; Care. Growth. Soar.
+    </p>
+    <p>© 2025 Star Therapies ED. Nairobi, Kenya. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .team-card, .who-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+
+    // Form submit (placeholder)
+    document.querySelector('.btn-submit').addEventListener('click', function() {
+      this.textContent = '✓ Enquiry Sent — We\'ll be in touch soon!';
+      this.style.background = '#4a7259';
+      this.disabled = true;
+    });
+  </script>
+</body>
+</html>
